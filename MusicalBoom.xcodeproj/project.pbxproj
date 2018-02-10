@@ -21,6 +21,9 @@
 		04FFECD3202F164700BE44EB /* ArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFECD2202F164700BE44EB /* ArtistCell.swift */; };
 		04FFECD5202F166800BE44EB /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFECD4202F166800BE44EB /* AlbumView.swift */; };
 		04FFECD7202F167300BE44EB /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFECD6202F167300BE44EB /* AlbumViewController.swift */; };
+		04FFECDB202F896A00BE44EB /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFECDA202F896A00BE44EB /* SearchResponse.swift */; };
+		04FFECDE202F89CF00BE44EB /* SearchArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFECDD202F89CF00BE44EB /* SearchArtist.swift */; };
+		04FFECE0202F8A9A00BE44EB /* SearchPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFECDF202F8A9A00BE44EB /* SearchPagination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		04FFECD2202F164700BE44EB /* ArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCell.swift; sourceTree = "<group>"; };
 		04FFECD4202F166800BE44EB /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		04FFECD6202F167300BE44EB /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		04FFECDA202F896A00BE44EB /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		04FFECDD202F89CF00BE44EB /* SearchArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtist.swift; sourceTree = "<group>"; };
+		04FFECDF202F8A9A00BE44EB /* SearchPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPagination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,7 @@
 		04FFECBC202F148D00BE44EB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				04FFECD9202F895F00BE44EB /* Search */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +208,16 @@
 				04FFECD6202F167300BE44EB /* AlbumViewController.swift */,
 			);
 			path = Album;
+			sourceTree = "<group>";
+		};
+		04FFECD9202F895F00BE44EB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				04FFECDA202F896A00BE44EB /* SearchResponse.swift */,
+				04FFECDF202F8A9A00BE44EB /* SearchPagination.swift */,
+				04FFECDD202F89CF00BE44EB /* SearchArtist.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,9 +291,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FFECDB202F896A00BE44EB /* SearchResponse.swift in Sources */,
 				04FFECD7202F167300BE44EB /* AlbumViewController.swift in Sources */,
 				04FFECD5202F166800BE44EB /* AlbumView.swift in Sources */,
 				04FFECCA202F160000BE44EB /* SearchViewController.swift in Sources */,
+				04FFECE0202F8A9A00BE44EB /* SearchPagination.swift in Sources */,
 				04FFECA6202F12C600BE44EB /* ViewController.swift in Sources */,
 				04FFECD1202F162C00BE44EB /* ArtistViewController.swift in Sources */,
 				04FFECC8202F15F500BE44EB /* SearchCell.swift in Sources */,
@@ -285,6 +304,7 @@
 				04FFECCF202F162200BE44EB /* ArtistView.swift in Sources */,
 				04FFECA4202F12C600BE44EB /* AppDelegate.swift in Sources */,
 				04FFECD3202F164700BE44EB /* ArtistCell.swift in Sources */,
+				04FFECDE202F89CF00BE44EB /* SearchArtist.swift in Sources */,
 				04FFECC1202F14FE00BE44EB /* View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,7 +436,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B746NKQ5P6;
-				INFOPLIST_FILE = MusicalBoom/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MusicalBoom/Resources/Plists/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kamilcholyk.MusicalBoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -431,7 +451,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B746NKQ5P6;
-				INFOPLIST_FILE = MusicalBoom/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MusicalBoom/Resources/Plists/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kamilcholyk.MusicalBoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";

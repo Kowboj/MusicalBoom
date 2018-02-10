@@ -6,4 +6,11 @@
 //  Copyright © 2018 Kamil Chołyk. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+final class ArtistViewController: ViewController {
+    
+    private let artistView = ArtistView()
+    
+    
+}

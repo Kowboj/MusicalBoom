@@ -6,4 +6,10 @@
 //  Copyright © 2018 Kamil Chołyk. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+final class ArtistView: View {
+    
+    
+    
+}
