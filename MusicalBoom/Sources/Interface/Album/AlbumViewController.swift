@@ -10,6 +10,11 @@ import UIKit
 
 final class AlbumViewController: ViewController {
     
+    private let albumView = AlbumView()
+    private let release_id = 1
     
-    
+    override func loadView() {
+        super.loadView()
+        view = albumView
+    }
 }
