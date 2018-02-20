@@ -17,11 +17,9 @@ final class ArtistViewController: ViewController {
     private var artistInfo: ArtistInfo?
     private var artistAlbumResponse: ArtistAlbumResponse?
     private var artistAlbums: [ArtistAlbum] = []
-    private var artistPhotoImage: UIImage?
     
     var currentId = 1
     
-
     override func loadView() {
         super.loadView()
         view = artistView
@@ -33,28 +31,18 @@ final class ArtistViewController: ViewController {
         getArtistInfo(id: currentId, token: token) {artist in
             self.artistInfo = artist
             DispatchQueue.main.async {
+                
                 print(self.artistInfo!)
-                self.artistView.artistName.text = self.artistInfo?.name
                 self.artistView.artistInfo.text = self.artistInfo?.profile
-                self.navigationItem.title = "\(self.artistInfo?.name)"
+                self.navigationItem.title = "\(self.artistInfo!.name)"
+                
+                let artistPhoto = self.artistInfo?.images[0].resource_url
+                self.getArtistPhoto(artistPhotoUrl: artistPhoto!) {photo in
+                    DispatchQueue.main.async {
+                        self.artistView.artistPhoto.image = photo
+                    }
+                }
             }
-        }
-        getArtistAlbums(id: currentId, token: token) {album in
-            self.artistAlbums.append(contentsOf: album)
-            DispatchQueue.main.async {
-                self.artistView.tableView.reloadData()
-            }
-        }
-        
-        guard let artistPhoto = artistInfo?.images![0].resource_url else { return }
-        do {
-            getArtistPhoto(artistPhotoUrl: artistPhoto) {photo in
-            self.artistPhotoImage = photo
-            DispatchQueue.main.async {
-                self.artistView.artistPhoto.image = self.artistPhotoImage
-            }
-        }
-        
         }
     }
     
@@ -65,7 +53,6 @@ final class ArtistViewController: ViewController {
     }
     
     func getArtistPhoto(artistPhotoUrl: String, completion: @escaping (UIImage?) -> Void) {
-        
         guard let url = URL(string: artistPhotoUrl) else { return }
         do {
             let imageData = try Data(contentsOf: url as URL)
@@ -75,7 +62,6 @@ final class ArtistViewController: ViewController {
         catch let photoErr {
             completion(nil)
         }
-        
     }
     
     func getArtistAlbums(id: Int, token: String, completion: @escaping ([ArtistAlbum]) -> Void) {
@@ -117,15 +103,22 @@ final class ArtistViewController: ViewController {
             }
             }.resume()
         
+        getArtistAlbums(id: currentId, token: token) {album in
+            self.artistAlbums.append(contentsOf: album)
+            DispatchQueue.main.async {
+                self.artistView.tableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         let albumViewController = AlbumViewController()
         navigationController?.pushViewController(albumViewController, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Albums"
+    }
 }
 
 extension ArtistViewController: UITableViewDelegate {

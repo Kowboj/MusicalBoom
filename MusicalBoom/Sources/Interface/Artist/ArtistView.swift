@@ -10,21 +10,12 @@ import UIKit
 
 final class ArtistView: View {
     
-    var artistName: UILabel = {
-        let artistName = UILabel()
-        artistName.translatesAutoresizingMaskIntoConstraints = false
-        return artistName
-    }()
-    
-    var activeFrom: UILabel = {
-        let activeFrom = UILabel()
-        activeFrom.translatesAutoresizingMaskIntoConstraints = false
-        return activeFrom
-    }()
-    
     var artistInfo: UILabel = {
         let artistInfo = UILabel()
         artistInfo.translatesAutoresizingMaskIntoConstraints = false
+        artistInfo.font = UIFont(name: "AmericanTypewriter", size: 12)
+        artistInfo.adjustsFontSizeToFitWidth = true
+        artistInfo.numberOfLines = 16
         return artistInfo
     }()
     
@@ -54,36 +45,26 @@ final class ArtistView: View {
     
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
-        [artistName, activeFrom, artistInfo, artistPhoto, tableView].forEach(addSubview)
+        [artistInfo, artistPhoto, tableView].forEach(addSubview)
     }
     
     override func setupLayoutConstraints() {
         super.setupLayoutConstraints()
         NSLayoutConstraint.activate([
             artistPhoto.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            artistPhoto.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
+            artistPhoto.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 20),
             artistPhoto.topAnchor.constraint(equalTo: topAnchor, constant: 64),
-            artistPhoto.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
-            
-            artistName.leadingAnchor.constraint(equalTo: artistPhoto.trailingAnchor, constant: 20),
-            artistName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 20),
-            artistName.topAnchor.constraint(equalTo: topAnchor, constant: 64),
-            artistName.heightAnchor.constraint(equalToConstant: 44),
-            
-            activeFrom.leadingAnchor.constraint(equalTo: artistPhoto.trailingAnchor, constant: 20),
-            activeFrom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 20),
-            activeFrom.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 20),
-            activeFrom.heightAnchor.constraint(equalToConstant: 44),
+            artistPhoto.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
             
             artistInfo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            artistInfo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 20),
+            artistInfo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             artistInfo.topAnchor.constraint(equalTo: artistPhoto.bottomAnchor, constant: 20),
             artistInfo.heightAnchor.constraint(equalToConstant: 120),
             
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             tableView.topAnchor.constraint(equalTo: artistInfo.bottomAnchor, constant: 20),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 20)
             ])
     }
 }

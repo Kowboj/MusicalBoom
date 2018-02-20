@@ -11,5 +11,5 @@ import Foundation
 struct ArtistInfo: Codable {
     let name: String
     let profile: String?
-    let images: [ArtistImage]?
+    let images: [ArtistImage]
 }

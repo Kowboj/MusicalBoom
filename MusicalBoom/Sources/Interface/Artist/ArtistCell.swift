@@ -13,6 +13,8 @@ final class ArtistCell: TableViewCell {
     lazy var albumLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont(name: "AmericanTypewriter", size: 15)
         return label
     }()
     
@@ -21,7 +23,7 @@ final class ArtistCell: TableViewCell {
     }
     
     override func setupProperties() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.darkGray
     }
     
     override func setupLayoutConstraints() {

@@ -11,6 +11,6 @@ import Foundation
 struct ArtistAlbum: Codable {
     let id: Int
     let title: String
-    let year: Int
+    let year: Int?
     let thumb: String?
 }
