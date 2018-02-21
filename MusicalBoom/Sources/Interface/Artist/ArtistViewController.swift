@@ -11,7 +11,6 @@ import UIKit
 final class ArtistViewController: ViewController {
     
     private let artistView = ArtistView()
-    private let cellId = "cellId"
     private let token = "ruDboTcLUPhRJTvKzOjfIhdWAJmXCtnJSpEvnjet"
     private let artistId: Int
     private var artistAlbums: [ArtistAlbum] = []
@@ -60,7 +59,7 @@ final class ArtistViewController: ViewController {
     }
     
     override func setupProperties() {
-        artistView.tableView.register(ArtistCell.self, forCellReuseIdentifier: cellId)
+        artistView.tableView.register(ArtistCell.self, forCellReuseIdentifier: ArtistCell.reuseIdentifier)
         artistView.tableView.dataSource = self
         artistView.tableView.delegate = self
     }
@@ -143,7 +142,7 @@ extension ArtistViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell: ArtistCell = tableView.dequeueReusableCell(withIdentifier: cellId) as? ArtistCell {
+        if let cell: ArtistCell = tableView.dequeueReusableCell(withIdentifier: ArtistCell.reuseIdentifier) as? ArtistCell {
             let currentItem = artistAlbums[indexPath.row]
             cell.albumLabel.text = currentItem.title
             return cell

@@ -11,9 +11,7 @@ import UIKit
 final class SearchViewController: ViewController, UISearchBarDelegate {
     
     private let searchView = SearchView()
-    private let cellId = "cellId"
     private let token = "ruDboTcLUPhRJTvKzOjfIhdWAJmXCtnJSpEvnjet"
-    
     private var searchResponse: SearchResponse?
     private var searchArtists : [SearchArtist] = []
     
@@ -31,7 +29,7 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
     }
     
     override func setupProperties() {
-        searchView.tableView.register(SearchCell.self, forCellReuseIdentifier: cellId)
+        searchView.tableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.reuseIdentifier)
         searchView.searchBar.delegate = self
         searchView.tableView.delegate = self
         searchView.tableView.dataSource = self
@@ -85,7 +83,7 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell: SearchCell = tableView.dequeueReusableCell(withIdentifier: cellId) as? SearchCell {
+        if let cell: SearchCell = tableView.dequeueReusableCell(withIdentifier: SearchCell.reuseIdentifier) as? SearchCell {
             let currentItem = searchArtists[indexPath.row]
             cell.artistNameLabel.text = currentItem.title
             return cell

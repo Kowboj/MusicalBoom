@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041B9352203DE31300F9FB37 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9351203DE31300F9FB37 /* Reusable.swift */; };
 		04327318203B2D3400EF7F37 /* ArtistAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04327317203B2D3400EF7F37 /* ArtistAlbum.swift */; };
 		0432731C203B2DA700EF7F37 /* ArtistAlbumResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432731B203B2DA700EF7F37 /* ArtistAlbumResponse.swift */; };
 		0432731E203B2DC500EF7F37 /* ArtistAlbumPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432731D203B2DC500EF7F37 /* ArtistAlbumPagination.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041B9351203DE31300F9FB37 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		04327317203B2D3400EF7F37 /* ArtistAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbum.swift; sourceTree = "<group>"; };
 		0432731B203B2DA700EF7F37 /* ArtistAlbumResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumResponse.swift; sourceTree = "<group>"; };
 		0432731D203B2DC500EF7F37 /* ArtistAlbumPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumPagination.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041B9350203DE2F600F9FB37 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				041B9351203DE31300F9FB37 /* Reusable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		04327319203B2D7600EF7F37 /* ArtistInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +146,7 @@
 				04FFECBB202F146F00BE44EB /* Abstractions */,
 				04FFECBD202F14AE00BE44EB /* Interface */,
 				04FFECBC202F148D00BE44EB /* Models */,
+				041B9350203DE2F600F9FB37 /* Protocols */,
 				04FFECBE202F14B900BE44EB /* Services */,
 			);
 			path = Sources;
@@ -344,6 +355,7 @@
 				04FFECD5202F166800BE44EB /* AlbumView.swift in Sources */,
 				0432731E203B2DC500EF7F37 /* ArtistAlbumPagination.swift in Sources */,
 				04F20A24203AED6800465F4C /* ArtistInfo.swift in Sources */,
+				041B9352203DE31300F9FB37 /* Reusable.swift in Sources */,
 				04FFECCA202F160000BE44EB /* SearchViewController.swift in Sources */,
 				04FFECE0202F8A9A00BE44EB /* SearchPagination.swift in Sources */,
 				04FFECA6202F12C600BE44EB /* ViewController.swift in Sources */,
