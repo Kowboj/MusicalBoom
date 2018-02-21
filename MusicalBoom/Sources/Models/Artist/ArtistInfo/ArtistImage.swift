@@ -9,7 +9,5 @@
 import Foundation
 
 struct ArtistImage: Codable {
-    let resource_url: String?
-    let height: Int
-    let width: Int
+    let resource_url: String
 }

@@ -13,35 +13,48 @@ final class ArtistViewController: ViewController {
     private let artistView = ArtistView()
     private let cellId = "cellId"
     private let token = "ruDboTcLUPhRJTvKzOjfIhdWAJmXCtnJSpEvnjet"
-    
-    private var artistInfo: ArtistInfo?
-    private var artistAlbumResponse: ArtistAlbumResponse?
+    private let artistId: Int
     private var artistAlbums: [ArtistAlbum] = []
     
-    var currentId = 1
+    init(artistId: Int) {
+        self.artistId = artistId
+        super.init()
+    }
     
     override func loadView() {
-        super.loadView()
         view = artistView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getArtistInfo(id: currentId, token: token) {artist in
-            self.artistInfo = artist
+        updatePage()
+        updateAlbums()
+    }
+    
+    
+    private func updatePage(){
+        getArtistInfo(id: artistId, token: token) { [unowned self] artist in
             DispatchQueue.main.async {
+                self.artistView.artistInfo.text = artist.profile
+                self.navigationItem.title = artist.name
                 
-                print(self.artistInfo!)
-                self.artistView.artistInfo.text = self.artistInfo?.profile
-                self.navigationItem.title = "\(self.artistInfo!.name)"
-                
-                let artistPhoto = self.artistInfo?.images[0].resource_url
-                self.getArtistPhoto(artistPhotoUrl: artistPhoto!) {photo in
+                guard let artistPhoto = artist.images?.first?.resource_url else { return }
+                self.getArtistPhoto(artistPhotoUrl: artistPhoto) { [unowned self] photo in
                     DispatchQueue.main.async {
                         self.artistView.artistPhoto.image = photo
                     }
                 }
+            }
+        }
+    }
+    
+    private func updateAlbums(){
+        getArtistAlbums(id: artistId, token: token) { [unowned self] albums in
+            
+            DispatchQueue.main.async {
+                self.artistAlbums.removeAll()
+                self.artistAlbums.append(contentsOf: albums)
+                self.artistView.tableView.reloadData()
             }
         }
     }
@@ -59,7 +72,7 @@ final class ArtistViewController: ViewController {
             let photo = UIImage(data: imageData)
             completion(photo)
         }
-        catch let photoErr {
+        catch _ {
             completion(nil)
         }
     }
@@ -75,7 +88,6 @@ final class ArtistViewController: ViewController {
             guard let data = data else { return }
             do {
                 let model = try JSONDecoder().decode(ArtistAlbumResponse.self, from: data)
-                self.artistAlbumResponse = model
                 completion(model.releases)
             } catch let jsonErr {
                 print(jsonErr)
@@ -96,41 +108,39 @@ final class ArtistViewController: ViewController {
             guard let data = data else { return }
             do {
                 let model = try JSONDecoder().decode(ArtistInfo.self, from: data)
-                self.artistInfo = model
                 completion(model)
             } catch let jsonErr {
                 print(jsonErr)
             }
             }.resume()
-        
-        getArtistAlbums(id: currentId, token: token) {album in
-            self.artistAlbums.append(contentsOf: album)
-            DispatchQueue.main.async {
-                self.artistView.tableView.reloadData()
-            }
-        }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let albumViewController = AlbumViewController()
-        navigationController?.pushViewController(albumViewController, animated: true)
-    }
     
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Albums"
     }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return UIView
+//    }
 }
 
 extension ArtistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let albumViewController = AlbumViewController()
+        navigationController?.pushViewController(albumViewController, animated: true)
+    }
 }
 
 extension ArtistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (artistAlbums.count)
+        return artistAlbums.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell: ArtistCell = tableView.dequeueReusableCell(withIdentifier: cellId) as? ArtistCell {

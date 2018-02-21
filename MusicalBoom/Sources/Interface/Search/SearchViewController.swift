@@ -66,9 +66,8 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
         }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let artistViewController = ArtistViewController()
+        let artistViewController = ArtistViewController(artistId: searchArtists[indexPath.row].id)
         navigationController?.pushViewController(artistViewController, animated: true)
-        artistViewController.currentId = searchArtists[indexPath.row].id
     }
 }
 
