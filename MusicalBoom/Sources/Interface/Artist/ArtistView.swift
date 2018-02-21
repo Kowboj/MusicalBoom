@@ -23,6 +23,7 @@ final class ArtistView: View {
         let photo = UIImageView()
         photo.translatesAutoresizingMaskIntoConstraints = false
         photo.contentMode = .scaleAspectFit
+        
         return photo
     }()
     
@@ -32,8 +33,8 @@ final class ArtistView: View {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor.darkGray
         tableView.separatorStyle = .none
-        //        tableView.keyboardDismissMode = .onDrag
-        //        tableView.tableFooterView = UIView(frame: .zero)
+        tableView.keyboardDismissMode = .onDrag
+        tableView.tableFooterView = UIView(frame: .zero)
         return tableView
     }()
     
@@ -51,8 +52,7 @@ final class ArtistView: View {
     override func setupLayoutConstraints() {
         super.setupLayoutConstraints()
         NSLayoutConstraint.activate([
-            artistPhoto.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            artistPhoto.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 20),
+            artistPhoto.centerXAnchor.constraint(equalTo: centerXAnchor),
             artistPhoto.topAnchor.constraint(equalTo: topAnchor, constant: 64),
             artistPhoto.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
             
