@@ -23,7 +23,6 @@ final class ArtistView: View {
         let photo = UIImageView()
         photo.translatesAutoresizingMaskIntoConstraints = false
         photo.contentMode = .scaleAspectFit
-        
         return photo
     }()
     
@@ -41,7 +40,6 @@ final class ArtistView: View {
     
     override func setupProperties() {
         super.setupProperties()
-        
     }
     
     override func setupViewHierarchy() {
@@ -64,7 +62,7 @@ final class ArtistView: View {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             tableView.topAnchor.constraint(equalTo: artistInfo.bottomAnchor, constant: 20),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 20)
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
             ])
     }
 }

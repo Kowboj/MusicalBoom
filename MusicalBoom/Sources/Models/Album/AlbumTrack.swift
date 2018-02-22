@@ -1,14 +1,14 @@
 //
-//  ArtistAlbum.swift
+//  AlbumTrack.swift
 //  MusicalBoom
 //
-//  Created by mac on 19.02.2018.
+//  Created by mac on 22.02.2018.
 //  Copyright © 2018 Kamil Chołyk. All rights reserved.
 //
 
 import Foundation
 
-struct ArtistAlbum: Codable {
-    let id: Int
+struct AlbumTrack: Codable {
     let title: String
+    let duration: String
 }

@@ -24,8 +24,8 @@ final class SearchView: View {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor.darkGray
         tableView.separatorStyle = .none
-//        tableView.keyboardDismissMode = .onDrag
-//        tableView.tableFooterView = UIView(frame: .zero)
+        tableView.keyboardDismissMode = .onDrag
+        tableView.tableFooterView = UIView(frame: .zero)
         return tableView
     }()
 

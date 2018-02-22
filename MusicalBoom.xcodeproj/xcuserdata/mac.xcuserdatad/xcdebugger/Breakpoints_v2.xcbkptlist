@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MusicalBoom/Sources/Interface/Artist/ArtistViewController.swift"
-            timestampString = "540927526.201054"
+            filePath = "MusicalBoom/Sources/Interface/Album/AlbumViewController.swift"
+            timestampString = "541001040.285839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "setupProperties()"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "init(albumId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicalBoom/Sources/Interface/Artist/ArtistViewController.swift"
+            timestampString = "541001040.285926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "init(artistId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

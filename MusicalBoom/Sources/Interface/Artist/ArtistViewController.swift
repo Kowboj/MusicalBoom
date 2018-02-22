@@ -64,7 +64,7 @@ final class ArtistViewController: ViewController {
         artistView.tableView.delegate = self
     }
     
-    func getArtistPhoto(artistPhotoUrl: String, completion: @escaping (UIImage?) -> Void) {
+    private func getArtistPhoto(artistPhotoUrl: String, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: artistPhotoUrl) else { return }
         do {
             let imageData = try Data(contentsOf: url as URL)
@@ -76,7 +76,7 @@ final class ArtistViewController: ViewController {
         }
     }
     
-    func getArtistAlbums(id: Int, token: String, completion: @escaping ([ArtistAlbum]) -> Void) {
+    private func getArtistAlbums(id: Int, token: String, completion: @escaping ([ArtistAlbum]) -> Void) {
         
         let urlString = "https://api.discogs.com/artists/\(id)/releases"
         guard let url = URL(string: urlString) else { return }
@@ -92,11 +92,9 @@ final class ArtistViewController: ViewController {
                 print(jsonErr)
             }
             }.resume()
-        
-        
     }
     
-    func getArtistInfo(id: Int, token: String, completion: @escaping (ArtistInfo) -> Void) {
+    private func getArtistInfo(id: Int, token: String, completion: @escaping (ArtistInfo) -> Void) {
         
         let urlString = "https://api.discogs.com/artists/\(id)"
         guard let url = URL(string: urlString) else { return }
@@ -130,7 +128,7 @@ extension ArtistViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let albumViewController = AlbumViewController()
+        let albumViewController = AlbumViewController(albumId: artistAlbums[indexPath.row].id)
         navigationController?.pushViewController(albumViewController, animated: true)
     }
 }
