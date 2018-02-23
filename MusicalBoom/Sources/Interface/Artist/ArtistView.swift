@@ -30,9 +30,8 @@ final class ArtistView: View {
     private(set) lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor.darkGray
+        tableView.backgroundColor = UIColor.lightGray
         tableView.separatorStyle = .none
-        tableView.keyboardDismissMode = .onDrag
         tableView.tableFooterView = UIView(frame: .zero)
         return tableView
     }()

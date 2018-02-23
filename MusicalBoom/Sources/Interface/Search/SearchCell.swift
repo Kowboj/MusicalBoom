@@ -13,6 +13,8 @@ final class SearchCell: TableViewCell {
     lazy var artistNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont(name: "AmericanTypewriter", size: 15)
         return label
     }()
     

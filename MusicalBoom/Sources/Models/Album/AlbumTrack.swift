@@ -10,5 +10,5 @@ import Foundation
 
 struct AlbumTrack: Codable {
     let title: String
-    let duration: String
+//    let duration: String?
 }

@@ -23,7 +23,7 @@ final class ArtistCell: TableViewCell {
     }
     
     override func setupProperties() {
-        backgroundColor = UIColor.darkGray
+        backgroundColor = UIColor.white
     }
     
     override func setupLayoutConstraints() {

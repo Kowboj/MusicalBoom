@@ -36,6 +36,7 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
         guard let searchBarText = searchBar.text else { return }
         searchArtists.removeAll()
         getArtists(name: searchBarText, token: token) {artist in

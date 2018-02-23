@@ -29,14 +29,13 @@ final class AlbumViewController: ViewController {
     
     private func updatePage() {
         getAlbumInfo(id: albumId, token: token) { [unowned self] album in
+            self.albumTracks.removeAll()
+            self.albumTracks.append(contentsOf: album.tracklist)
             DispatchQueue.main.async {
-                
+                self.albumView.tableView.reloadData()
                 self.albumView.albumInfo.text = album.notes
                 self.albumView.albumYear.text = String(describing: album.year!)
                 self.navigationItem.title = album.title
-                self.albumTracks.removeAll()
-                self.albumTracks.append(contentsOf: album.tracklist)
-                self.albumView.tableView.reloadData()
                 
                 guard let albumPhoto = album.images?.first?.resource_url else { return }
                 self.getAlbumPhoto(albumPhotoUrl: albumPhoto) { [unowned self] photo in
@@ -102,7 +101,6 @@ extension AlbumViewController: UITableViewDataSource {
         if let cell: AlbumCell = tableView.dequeueReusableCell(withIdentifier: AlbumCell.reuseIdentifier) as? AlbumCell {
             let currentItem = albumTracks[indexPath.row]
             cell.trackLabel.text = currentItem.title
-            cell.durationLabel.text = currentItem.duration
             return cell
         } else {
             return UITableViewCell()
