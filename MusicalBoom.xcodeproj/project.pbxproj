@@ -22,6 +22,7 @@
 		047477512041A36400C20CB9 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477502041A36400C20CB9 /* SearchRequest.swift */; };
 		047477532041A67300C20CB9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477522041A67300C20CB9 /* Result.swift */; };
 		047477552041ACCE00C20CB9 /* APIQueryParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477542041ACCE00C20CB9 /* APIQueryParameter.swift */; };
+		047477652041B6C700C20CB9 /* SearchRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477642041B6C700C20CB9 /* SearchRequestTest.swift */; };
 		0497C859203EF5CF00658CC9 /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497C858203EF5CE00658CC9 /* AlbumInfo.swift */; };
 		0497C85B203EF66300658CC9 /* AlbumImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497C85A203EF66300658CC9 /* AlbumImage.swift */; };
 		0497C85D203EF6D300658CC9 /* AlbumTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497C85C203EF6D300658CC9 /* AlbumTrack.swift */; };
@@ -47,6 +48,16 @@
 		04FFECE0202F8A9A00BE44EB /* SearchPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFECDF202F8A9A00BE44EB /* SearchPagination.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0474775F2041B67100C20CB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04FFEC98202F12C600BE44EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04FFEC9F202F12C600BE44EB;
+			remoteInfo = MusicalBoom;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		041B9351203DE31300F9FB37 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		04327317203B2D3400EF7F37 /* ArtistAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbum.swift; sourceTree = "<group>"; };
@@ -63,6 +74,9 @@
 		047477502041A36400C20CB9 /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		047477522041A67300C20CB9 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		047477542041ACCE00C20CB9 /* APIQueryParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQueryParameter.swift; sourceTree = "<group>"; };
+		0474775A2041B67100C20CB9 /* MusicalBoomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicalBoomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0474775E2041B67100C20CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		047477642041B6C700C20CB9 /* SearchRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestTest.swift; sourceTree = "<group>"; };
 		0497C858203EF5CE00658CC9 /* AlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
 		0497C85A203EF66300658CC9 /* AlbumImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImage.swift; sourceTree = "<group>"; };
 		0497C85C203EF6D300658CC9 /* AlbumTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTrack.swift; sourceTree = "<group>"; };
@@ -91,6 +105,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		047477572041B67100C20CB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04FFEC9D202F12C600BE44EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,6 +165,15 @@
 			path = Services/Network;
 			sourceTree = "<group>";
 		};
+		0474775B2041B67100C20CB9 /* MusicalBoomTests */ = {
+			isa = PBXGroup;
+			children = (
+				047477642041B6C700C20CB9 /* SearchRequestTest.swift */,
+				0474775E2041B67100C20CB9 /* Info.plist */,
+			);
+			path = MusicalBoomTests;
+			sourceTree = "<group>";
+		};
 		04F20A1A203ADDE200465F4C /* Artist */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				04FFECA2202F12C600BE44EB /* MusicalBoom */,
+				0474775B2041B67100C20CB9 /* MusicalBoomTests */,
 				04FFECA1202F12C600BE44EB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -175,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				04FFECA0202F12C600BE44EB /* MusicalBoom.app */,
+				0474775A2041B67100C20CB9 /* MusicalBoomTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -335,6 +367,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		047477592041B67100C20CB9 /* MusicalBoomTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 047477612041B67100C20CB9 /* Build configuration list for PBXNativeTarget "MusicalBoomTests" */;
+			buildPhases = (
+				047477562041B67100C20CB9 /* Sources */,
+				047477572041B67100C20CB9 /* Frameworks */,
+				047477582041B67100C20CB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				047477602041B67100C20CB9 /* PBXTargetDependency */,
+			);
+			name = MusicalBoomTests;
+			productName = MusicalBoomTests;
+			productReference = 0474775A2041B67100C20CB9 /* MusicalBoomTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		04FFEC9F202F12C600BE44EB /* MusicalBoom */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04FFECB2202F12C600BE44EB /* Build configuration list for PBXNativeTarget "MusicalBoom" */;
@@ -362,6 +412,11 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Kamil Chołyk";
 				TargetAttributes = {
+					047477592041B67100C20CB9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 04FFEC9F202F12C600BE44EB;
+					};
 					04FFEC9F202F12C600BE44EB = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -382,11 +437,19 @@
 			projectRoot = "";
 			targets = (
 				04FFEC9F202F12C600BE44EB /* MusicalBoom */,
+				047477592041B67100C20CB9 /* MusicalBoomTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		047477582041B67100C20CB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04FFEC9E202F12C600BE44EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -399,6 +462,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		047477562041B67100C20CB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				047477652041B6C700C20CB9 /* SearchRequestTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04FFEC9C202F12C600BE44EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -444,6 +515,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		047477602041B67100C20CB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04FFEC9F202F12C600BE44EB /* MusicalBoom */;
+			targetProxy = 0474775F2041B67100C20CB9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		04FFECAC202F12C600BE44EB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -456,6 +535,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		047477622041B67100C20CB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B746NKQ5P6;
+				INFOPLIST_FILE = MusicalBoomTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kamilcholyk.MusicalBoomTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicalBoom.app/MusicalBoom";
+			};
+			name = Debug;
+		};
+		047477632041B67100C20CB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B746NKQ5P6;
+				INFOPLIST_FILE = MusicalBoomTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kamilcholyk.MusicalBoomTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicalBoom.app/MusicalBoom";
+			};
+			name = Release;
+		};
 		04FFECB0202F12C600BE44EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -596,6 +711,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		047477612041B67100C20CB9 /* Build configuration list for PBXNativeTarget "MusicalBoomTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				047477622041B67100C20CB9 /* Debug */,
+				047477632041B67100C20CB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		04FFEC9B202F12C600BE44EB /* Build configuration list for PBXProject "MusicalBoom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

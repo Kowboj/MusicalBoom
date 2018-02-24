@@ -46,7 +46,6 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
             self.searchArtists.append(contentsOf: artist)
             DispatchQueue.main.async {
                 self.searchView.tableView.reloadData()
-                self.searchView.tableView.reloadData()
             }
         }
     }
