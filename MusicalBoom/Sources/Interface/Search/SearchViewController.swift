@@ -12,11 +12,12 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
     
     private let searchView = SearchView()
     private let token = "ruDboTcLUPhRJTvKzOjfIhdWAJmXCtnJSpEvnjet"
+    private let apiClient = DefaultAPIClient()
     private var searchResponse: SearchResponse?
     private var searchArtists : [SearchArtist] = []
     
+    
     override func loadView() {
-        super.loadView()
         view = searchView
     }
     
@@ -25,10 +26,12 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
     }
     
     override func setupNavigationItem() {
+        super.setupNavigationItem()
         navigationItem.title = "MusicalBoom"
     }
     
     override func setupProperties() {
+        super.setupProperties()
         searchView.tableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.reuseIdentifier)
         searchView.searchBar.delegate = self
         searchView.tableView.delegate = self
@@ -38,21 +41,21 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         guard let searchBarText = searchBar.text else { return }
-        searchArtists.removeAll()
-        getArtists(name: searchBarText, token: token) {artist in
+        getArtists(name: searchBarText, token: token) { artist in
+            self.searchArtists.removeAll()
             self.searchArtists.append(contentsOf: artist)
             DispatchQueue.main.async {
+                self.searchView.tableView.reloadData()
                 self.searchView.tableView.reloadData()
             }
         }
     }
     
     func getArtists(name: String, token: String, completion: @escaping ([SearchArtist]) -> Void) {
-            
-            let urlString = "https://api.discogs.com/database/search?q=\(name)&type=artist&token=\(token)"
-            guard let url = URL(string: urlString) else { return }
-            URLSession.shared.dataTask(with: url) { (data, response, err) in
-                guard let data = data else { return }
+        
+        apiClient.send(request: SearchRequest(name: name)) { (response) in
+            switch response {
+            case .success(let data):
                 do {
                     let model = try JSONDecoder().decode(SearchResponse.self, from: data)
                     self.searchResponse = model
@@ -60,9 +63,11 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
                 } catch let jsonErr {
                     print(jsonErr)
                 }
-                }.resume()
-            
+            case .failure(let error):
+                print(error)
+            }
         }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let artistViewController = ArtistViewController(artistId: searchArtists[indexPath.row].id)

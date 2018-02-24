@@ -9,10 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func loadView() {
-        super.loadView()
-    }
     
     init() {
         super.init(nibName: nil, bundle: nil)

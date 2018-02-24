@@ -30,8 +30,8 @@ final class ArtistCell: TableViewCell {
         NSLayoutConstraint.activate([
             albumLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             albumLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            albumLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            albumLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            albumLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            albumLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
             ])
     }
 }

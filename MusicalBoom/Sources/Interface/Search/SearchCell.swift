@@ -30,8 +30,8 @@ final class SearchCell: TableViewCell {
         NSLayoutConstraint.activate([
             artistNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             artistNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            artistNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            artistNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            artistNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            artistNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
             ])
     }
 }

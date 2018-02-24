@@ -18,9 +18,9 @@ class View: UIView {
         setupLayoutConstraints()
     }
     
-//    override static var requiresConstraintBasedLayout: Bool {
-//        return true
-//    }
+    override static var requiresConstraintBasedLayout: Bool {
+        return true
+    }
     
     func setupViewHierarchy() {}
     func setupProperties() {}

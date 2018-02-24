@@ -9,6 +9,6 @@
 import Foundation
 
 struct SearchResponse: Codable {
-    let pagination: SearchPagination
+    let pagination: SearchPagination?
     let results: [SearchArtist]
 }
