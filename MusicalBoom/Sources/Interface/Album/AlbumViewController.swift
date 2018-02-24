@@ -47,6 +47,12 @@ final class AlbumViewController: ViewController {
         }
     }
     
+    override func setupProperties() {
+        albumView.tableView.delegate = self
+        albumView.tableView.dataSource = self
+        albumView.tableView.register(AlbumCell.self, forCellReuseIdentifier: AlbumCell.reuseIdentifier)
+    }
+    
     private func getAlbumInfo(id: Int, token: String, completion: @escaping (AlbumInfo) -> Void) {
         
         let urlString = "https://api.discogs.com/releases/\(id)"
@@ -101,6 +107,7 @@ extension AlbumViewController: UITableViewDataSource {
         if let cell: AlbumCell = tableView.dequeueReusableCell(withIdentifier: AlbumCell.reuseIdentifier) as? AlbumCell {
             let currentItem = albumTracks[indexPath.row]
             cell.trackLabel.text = currentItem.title
+            cell.durationLabel.text = currentItem.duration
             return cell
         } else {
             return UITableViewCell()
