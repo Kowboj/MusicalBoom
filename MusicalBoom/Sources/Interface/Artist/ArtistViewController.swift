@@ -11,8 +11,8 @@ import UIKit
 final class ArtistViewController: ViewController {
     
     private let artistView = ArtistView()
-    private let token = "ruDboTcLUPhRJTvKzOjfIhdWAJmXCtnJSpEvnjet"
     private let artistId: Int
+    private let apiClient = DefaultAPIClient()
     private var artistAlbums: [ArtistAlbum] = []
     
     init(artistId: Int) {
@@ -32,7 +32,7 @@ final class ArtistViewController: ViewController {
     
     
     private func updatePage(){
-        getArtistInfo(id: artistId, token: token) { [unowned self] artist in
+        getArtistInfo(id: artistId) { [unowned self] artist in
             DispatchQueue.main.async {
                 self.artistView.artistInfo.text = artist.profile
                 self.navigationItem.title = artist.name
@@ -48,7 +48,7 @@ final class ArtistViewController: ViewController {
     }
     
     private func updateAlbums(){
-        getArtistAlbums(id: artistId, token: token) { [unowned self] albums in
+        getArtistAlbums(id: artistId) { [unowned self] albums in
             
             DispatchQueue.main.async {
                 self.artistAlbums.removeAll()
@@ -59,6 +59,7 @@ final class ArtistViewController: ViewController {
     }
     
     override func setupProperties() {
+        super.setupProperties()
         artistView.tableView.register(ArtistCell.self, forCellReuseIdentifier: ArtistCell.reuseIdentifier)
         artistView.tableView.dataSource = self
         artistView.tableView.delegate = self
@@ -76,50 +77,43 @@ final class ArtistViewController: ViewController {
         }
     }
     
-    private func getArtistAlbums(id: Int, token: String, completion: @escaping ([ArtistAlbum]) -> Void) {
+    private func getArtistAlbums(id: Int, completion: @escaping ([ArtistAlbum]) -> Void) {
         
-        let urlString = "https://api.discogs.com/artists/\(id)/releases"
-        guard let url = URL(string: urlString) else { return }
-        var urlRequest = URLRequest(url: url)
-        let headerValue = "Discogs token=\(token)"
-        urlRequest.setValue(headerValue, forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, err) in
-            guard let data = data else { return }
-            do {
-                let model = try JSONDecoder().decode(ArtistAlbumResponse.self, from: data)
-                completion(model.releases)
-            } catch let jsonErr {
-                print(jsonErr)
+        apiClient.send(request: ArtistAlbumsRequest(id: id)) { (response) in
+            switch response {
+            case .success(let data):
+                do {
+                    let model = try JSONDecoder().decode(ArtistAlbumResponse.self, from: data)
+                    completion(model.releases)
+                } catch let jsonErr {
+                    print(jsonErr)
+                }
+            case .failure(let error):
+                print(error)
             }
-            }.resume()
+        }
     }
     
-    private func getArtistInfo(id: Int, token: String, completion: @escaping (ArtistInfo) -> Void) {
+    private func getArtistInfo(id: Int, completion: @escaping (ArtistInfo) -> Void) {
         
-        let urlString = "https://api.discogs.com/artists/\(id)"
-        guard let url = URL(string: urlString) else { return }
-        var urlRequest = URLRequest(url: url)
-        let headerValue = "Discogs token=\(token)"
-        urlRequest.setValue(headerValue, forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, err) in
-            guard let data = data else { return }
-            do {
-                let model = try JSONDecoder().decode(ArtistInfo.self, from: data)
-                completion(model)
-            } catch let jsonErr {
-                print(jsonErr)
+        apiClient.send(request: ArtistRequest(id: id)) { (response) in
+            switch response {
+            case .success(let data):
+                do {
+                    let model = try JSONDecoder().decode(ArtistInfo.self, from: data)
+                    completion(model)
+                } catch let jsonErr {
+                    print(jsonErr)
+                }
+            case .failure(let error):
+                print(error)
             }
-            }.resume()
+        }
     }
-    
-    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Albums"
     }
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return UIView
-//    }
 }
 
 extension ArtistViewController: UITableViewDelegate {
@@ -142,6 +136,7 @@ extension ArtistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell: ArtistCell = tableView.dequeueReusableCell(withIdentifier: ArtistCell.reuseIdentifier) as? ArtistCell {
             let currentItem = artistAlbums[indexPath.row]
+            cell.accessoryType = .disclosureIndicator
             cell.albumLabel.text = currentItem.title
             return cell
         } else {

@@ -23,7 +23,7 @@ final class SearchCell: TableViewCell {
     }
     
     override func setupProperties() {
-        backgroundColor = UIColor.white
+        backgroundColor = .white
     }
     
     override func setupLayoutConstraints() {

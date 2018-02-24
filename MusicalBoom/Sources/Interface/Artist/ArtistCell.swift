@@ -14,7 +14,7 @@ final class ArtistCell: TableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center
-        label.font = UIFont(name: "AmericanTypewriter", size: 15)
+        label.font = UIFont(name: "AmericanTypewriter", size: 14)
         return label
     }()
     
@@ -23,7 +23,7 @@ final class ArtistCell: TableViewCell {
     }
     
     override func setupProperties() {
-        backgroundColor = UIColor.white
+        backgroundColor = .white
     }
     
     override func setupLayoutConstraints() {

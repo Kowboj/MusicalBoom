@@ -32,15 +32,10 @@ final class SearchView: View {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor.lightGray
         tableView.separatorStyle = .none
-//        tableView.keyboardDismissMode = .onDrag
         tableView.tableFooterView = UIView(frame: .zero)
         return tableView
     }()
 
-    override func setupProperties() {
-        super.setupProperties()
-        
-    }
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
         [welcomePhoto, searchBar, tableView].forEach(addSubview)

@@ -11,8 +11,8 @@ import UIKit
 final class AlbumViewController: ViewController {
     
     private let albumView = AlbumView()
-    private let token = "ruDboTcLUPhRJTvKzOjfIhdWAJmXCtnJSpEvnjet"
-    private let albumId : Int
+    private let albumId: Int
+    private let apiClient = DefaultAPIClient()
     private var albumTracks: [AlbumTrack] = []
     
     init(albumId: Int) {
@@ -28,7 +28,7 @@ final class AlbumViewController: ViewController {
     }
     
     private func updatePage() {
-        getAlbumInfo(id: albumId, token: token) { [unowned self] album in
+        getAlbumInfo(id: albumId) { [unowned self] album in
             self.albumTracks.removeAll()
             self.albumTracks.append(contentsOf: album.tracklist)
             DispatchQueue.main.async {
@@ -48,27 +48,27 @@ final class AlbumViewController: ViewController {
     }
     
     override func setupProperties() {
+        super.setupProperties()
         albumView.tableView.delegate = self
         albumView.tableView.dataSource = self
         albumView.tableView.register(AlbumCell.self, forCellReuseIdentifier: AlbumCell.reuseIdentifier)
     }
     
-    private func getAlbumInfo(id: Int, token: String, completion: @escaping (AlbumInfo) -> Void) {
+    private func getAlbumInfo(id: Int, completion: @escaping (AlbumInfo) -> Void) {
         
-        let urlString = "https://api.discogs.com/releases/\(id)"
-        guard let url = URL(string: urlString) else { return }
-        var urlRequest = URLRequest(url: url)
-        let headerValue = "Discogs token=\(token)"
-        urlRequest.setValue(headerValue, forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, err) in
-            guard let data = data else { return }
-            do {
-                let model = try JSONDecoder().decode(AlbumInfo.self, from: data)
-                completion(model)
-            } catch let jsonErr {
-                print(jsonErr)
+        apiClient.send(request: AlbumRequest(id: id)) { (response) in
+            switch response {
+            case .success(let data):
+                do {
+                    let model = try JSONDecoder().decode(AlbumInfo.self, from: data)
+                    completion(model)
+                } catch let jsonErr {
+                    print(jsonErr)
+                }
+            case .failure(let error):
+                print(error)
             }
-            }.resume()
+        }
     }
     
     private func getAlbumPhoto(albumPhotoUrl: String, completion: @escaping (UIImage?) -> Void) {
@@ -86,9 +86,6 @@ final class AlbumViewController: ViewController {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Tracks"
     }
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return UIView
-//    }
 }
 
 extension AlbumViewController: UITableViewDelegate {

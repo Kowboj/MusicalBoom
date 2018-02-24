@@ -26,15 +26,18 @@ final class AlbumCell: TableViewCell {
     }()
     
     override func setupViewHierarchy() {
+        super.setupViewHierarchy()
         contentView.addSubview(trackLabel)
         contentView.addSubview(durationLabel)
     }
     
     override func setupProperties() {
+        super.setupProperties()
         backgroundColor = UIColor.white
     }
     
     override func setupLayoutConstraints() {
+        super.setupLayoutConstraints()
         NSLayoutConstraint.activate([
             trackLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             trackLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

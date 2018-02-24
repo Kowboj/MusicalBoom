@@ -11,7 +11,6 @@ import UIKit
 final class SearchViewController: ViewController, UISearchBarDelegate {
     
     private let searchView = SearchView()
-    private let token = "ruDboTcLUPhRJTvKzOjfIhdWAJmXCtnJSpEvnjet"
     private let apiClient = DefaultAPIClient()
     private var searchResponse: SearchResponse?
     private var searchArtists : [SearchArtist] = []
@@ -20,11 +19,7 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
     override func loadView() {
         view = searchView
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+
     override func setupNavigationItem() {
         super.setupNavigationItem()
         navigationItem.title = "MusicalBoom"
@@ -41,7 +36,7 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         guard let searchBarText = searchBar.text else { return }
-        getArtists(name: searchBarText, token: token) { artist in
+        getArtists(name: searchBarText) { artist in
             self.searchArtists.removeAll()
             self.searchArtists.append(contentsOf: artist)
             DispatchQueue.main.async {
@@ -50,7 +45,7 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
         }
     }
     
-    func getArtists(name: String, token: String, completion: @escaping ([SearchArtist]) -> Void) {
+    func getArtists(name: String, completion: @escaping ([SearchArtist]) -> Void) {
         
         apiClient.send(request: SearchRequest(name: name)) { (response) in
             switch response {
@@ -74,8 +69,6 @@ final class SearchViewController: ViewController, UISearchBarDelegate {
     }
 }
 
-
-
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
@@ -90,6 +83,7 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell: SearchCell = tableView.dequeueReusableCell(withIdentifier: SearchCell.reuseIdentifier) as? SearchCell {
             let currentItem = searchArtists[indexPath.row]
+            cell.accessoryType = .disclosureIndicator
             cell.artistNameLabel.text = currentItem.title
             return cell
         } else {

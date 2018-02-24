@@ -23,6 +23,9 @@
 		047477532041A67300C20CB9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477522041A67300C20CB9 /* Result.swift */; };
 		047477552041ACCE00C20CB9 /* APIQueryParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477542041ACCE00C20CB9 /* APIQueryParameter.swift */; };
 		047477652041B6C700C20CB9 /* SearchRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477642041B6C700C20CB9 /* SearchRequestTest.swift */; };
+		047477672041E62600C20CB9 /* AlbumRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477662041E62600C20CB9 /* AlbumRequest.swift */; };
+		047477692041E63400C20CB9 /* ArtistRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047477682041E63400C20CB9 /* ArtistRequest.swift */; };
+		0474776F2041E95900C20CB9 /* ArtistAlbumsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474776E2041E95900C20CB9 /* ArtistAlbumsRequest.swift */; };
 		0497C859203EF5CF00658CC9 /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497C858203EF5CE00658CC9 /* AlbumInfo.swift */; };
 		0497C85B203EF66300658CC9 /* AlbumImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497C85A203EF66300658CC9 /* AlbumImage.swift */; };
 		0497C85D203EF6D300658CC9 /* AlbumTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497C85C203EF6D300658CC9 /* AlbumTrack.swift */; };
@@ -77,6 +80,9 @@
 		0474775A2041B67100C20CB9 /* MusicalBoomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicalBoomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0474775E2041B67100C20CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		047477642041B6C700C20CB9 /* SearchRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestTest.swift; sourceTree = "<group>"; };
+		047477662041E62600C20CB9 /* AlbumRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumRequest.swift; sourceTree = "<group>"; };
+		047477682041E63400C20CB9 /* ArtistRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistRequest.swift; sourceTree = "<group>"; };
+		0474776E2041E95900C20CB9 /* ArtistAlbumsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumsRequest.swift; sourceTree = "<group>"; };
 		0497C858203EF5CE00658CC9 /* AlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
 		0497C85A203EF66300658CC9 /* AlbumImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImage.swift; sourceTree = "<group>"; };
 		0497C85C203EF6D300658CC9 /* AlbumTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTrack.swift; sourceTree = "<group>"; };
@@ -152,13 +158,13 @@
 		0474773F2041965900C20CB9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				047477702041EBC900C20CB9 /* Requests */,
 				047477402041968200C20CB9 /* APIRequest.swift */,
 				04747744204197DB00C20CB9 /* DefaultAPIClient.swift */,
 				047477422041979A00C20CB9 /* APIClient.swift */,
 				0474774A20419A5000C20CB9 /* APIService.swift */,
 				0474774C20419B8500C20CB9 /* DiscogsService.swift */,
 				0474774E20419D8900C20CB9 /* APIError.swift */,
-				047477502041A36400C20CB9 /* SearchRequest.swift */,
 				047477542041ACCE00C20CB9 /* APIQueryParameter.swift */,
 			);
 			name = Network;
@@ -172,6 +178,17 @@
 				0474775E2041B67100C20CB9 /* Info.plist */,
 			);
 			path = MusicalBoomTests;
+			sourceTree = "<group>";
+		};
+		047477702041EBC900C20CB9 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				047477502041A36400C20CB9 /* SearchRequest.swift */,
+				047477682041E63400C20CB9 /* ArtistRequest.swift */,
+				0474776E2041E95900C20CB9 /* ArtistAlbumsRequest.swift */,
+				047477662041E62600C20CB9 /* AlbumRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		04F20A1A203ADDE200465F4C /* Artist */ = {
@@ -488,6 +505,7 @@
 				047477552041ACCE00C20CB9 /* APIQueryParameter.swift in Sources */,
 				047477532041A67300C20CB9 /* Result.swift in Sources */,
 				04FFECA6202F12C600BE44EB /* ViewController.swift in Sources */,
+				047477692041E63400C20CB9 /* ArtistRequest.swift in Sources */,
 				0474774D20419B8500C20CB9 /* DiscogsService.swift in Sources */,
 				04FFECD1202F162C00BE44EB /* ArtistViewController.swift in Sources */,
 				0497C85F203EFB3900658CC9 /* AlbumCell.swift in Sources */,
@@ -499,8 +517,10 @@
 				04FFECC3202F151300BE44EB /* TableViewCell.swift in Sources */,
 				047477492041993700C20CB9 /* Foundation.URLComponents.swift in Sources */,
 				04FFECCF202F162200BE44EB /* ArtistView.swift in Sources */,
+				047477672041E62600C20CB9 /* AlbumRequest.swift in Sources */,
 				04FFECA4202F12C600BE44EB /* AppDelegate.swift in Sources */,
 				04327318203B2D3400EF7F37 /* ArtistAlbum.swift in Sources */,
+				0474776F2041E95900C20CB9 /* ArtistAlbumsRequest.swift in Sources */,
 				0497C85B203EF66300658CC9 /* AlbumImage.swift in Sources */,
 				0432731C203B2DA700EF7F37 /* ArtistAlbumResponse.swift in Sources */,
 				04FFECD3202F164700BE44EB /* ArtistCell.swift in Sources */,

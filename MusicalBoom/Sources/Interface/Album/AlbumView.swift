@@ -10,16 +10,15 @@ import UIKit
 
 final class AlbumView: View {
     
-    var albumInfo: UILabel = {
-        let albumInfo = UILabel()
+    lazy var albumInfo: UITextView = {
+        let albumInfo = UITextView()
+        albumInfo.backgroundColor = .lightGray
         albumInfo.translatesAutoresizingMaskIntoConstraints = false
         albumInfo.font = UIFont(name: "AmericanTypewriter", size: 12)
-        albumInfo.adjustsFontSizeToFitWidth = true
-        albumInfo.numberOfLines = 16
         return albumInfo
     }()
     
-    var albumYear: UILabel = {
+    lazy var albumYear: UILabel = {
         let albumYear = UILabel()
         albumYear.translatesAutoresizingMaskIntoConstraints = false
         albumYear.font = UIFont(name: "AmericanTypewriter", size: 15)
@@ -27,7 +26,7 @@ final class AlbumView: View {
         return albumYear
     }()
     
-    var albumPhoto: UIImageView = {
+    lazy var albumPhoto: UIImageView = {
         let albumPhoto = UIImageView()
         albumPhoto.translatesAutoresizingMaskIntoConstraints = false
         albumPhoto.contentMode = .scaleAspectFit
@@ -44,10 +43,6 @@ final class AlbumView: View {
         return tableView
     }()
     
-    override func setupProperties() {
-        super.setupProperties()
-    }
-    
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
         [albumInfo, albumYear, albumPhoto, tableView].forEach(addSubview)
@@ -57,7 +52,7 @@ final class AlbumView: View {
         super.setupLayoutConstraints()
         NSLayoutConstraint.activate([
             albumPhoto.centerXAnchor.constraint(equalTo: centerXAnchor),
-            albumPhoto.topAnchor.constraint(equalTo: topAnchor, constant: 64),
+            albumPhoto.topAnchor.constraint(equalTo: topAnchor, constant: 76),
             albumPhoto.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
             
             albumInfo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

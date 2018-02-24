@@ -10,16 +10,16 @@ import UIKit
 
 final class ArtistView: View {
     
-    var artistInfo: UILabel = {
-        let artistInfo = UILabel()
+    lazy var artistInfo: UITextView = {
+        let artistInfo = UITextView()
+        artistInfo.backgroundColor = .lightGray
+        artistInfo.dataDetectorTypes = .all
         artistInfo.translatesAutoresizingMaskIntoConstraints = false
-        artistInfo.font = UIFont(name: "AmericanTypewriter", size: 12)
-        artistInfo.adjustsFontSizeToFitWidth = true
-        artistInfo.numberOfLines = 16
+        artistInfo.font = UIFont(name: "AmericanTypewriter", size: 14)
         return artistInfo
     }()
     
-    var artistPhoto: UIImageView = {
+    lazy var artistPhoto: UIImageView = {
         let photo = UIImageView()
         photo.translatesAutoresizingMaskIntoConstraints = false
         photo.contentMode = .scaleAspectFit
@@ -30,16 +30,11 @@ final class ArtistView: View {
     private(set) lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor.lightGray
+        tableView.backgroundColor = .lightGray
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView(frame: .zero)
         return tableView
     }()
-    
-    
-    override func setupProperties() {
-        super.setupProperties()
-    }
     
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
@@ -50,7 +45,7 @@ final class ArtistView: View {
         super.setupLayoutConstraints()
         NSLayoutConstraint.activate([
             artistPhoto.centerXAnchor.constraint(equalTo: centerXAnchor),
-            artistPhoto.topAnchor.constraint(equalTo: topAnchor, constant: 64),
+            artistPhoto.topAnchor.constraint(equalTo: topAnchor, constant: 76),
             artistPhoto.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
             
             artistInfo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
